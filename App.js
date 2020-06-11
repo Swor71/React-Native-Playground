@@ -7,13 +7,16 @@ export default function App() {
 
   const handleTextChange = value => setTodo(value);
 
-  const handleButtonPress = () => setTodoList([...todoList, todo]);
+  const handleButtonPress = () => setTodoList(prevState => [...prevState, todo]);
 
   return (
     <View style={styles.root}>
       <View style={styles.inputContainer}>
         <TextInput placeholder="Add a todo item" style={styles.input} onChangeText={handleTextChange} value={todo} />
         <Button title="press" onPress={handleButtonPress} />
+      </View>
+      <View>
+        {todoList.map(todo => <Text>{todo}</Text>)}
       </View>
     </View>
   );
