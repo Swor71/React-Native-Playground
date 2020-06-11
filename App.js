@@ -19,7 +19,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>{text}</Text>
-      <Button title="Press me" onPress={() => changeContents()} />
+      <Button title="Press me" onPress={changeContents} />
     </View>
   );
 }
