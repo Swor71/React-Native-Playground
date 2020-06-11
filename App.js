@@ -1,34 +1,29 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
-  const [text, setText] = useState('first text.')
-
-  const optionsArray = [
-    'first text',
-    'second text',
-    'third text',
-  ];
-
-  const changeContents = () => {
-    const randomNumber = Math.floor(Math.random() * 3);
-
-    setText(optionsArray[randomNumber])
-  }
-
   return (
     <View style={styles.container}>
-      <Text>{text}</Text>
-      <Button title="Press me" onPress={changeContents} />
+      <View style={styles.header}>
+        <TextInput placeholder="Enter your name" style={styles.input} />
+        <Button title="press" />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 50,
   },
+  input: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    marginBottom: 10,
+    padding: 5,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+  }
 });
