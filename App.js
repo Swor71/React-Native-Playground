@@ -1,14 +1,24 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  FlatList,
+} from "react-native";
 
 export default function App() {
-  const [todo, setTodo] = useState("buy milk");
+  const [todo, setTodo] = useState();
   const [todoList, setTodoList] = useState([]);
 
   const handleTextChange = (value) => setTodo(value);
 
   const handleButtonPress = () =>
-    setTodoList((prevState) => [...prevState, todo]);
+    setTodoList((prevState) => [
+      ...prevState,
+      { key: Math.random().toString(), value: todo },
+    ]);
 
   return (
     <View style={styles.root}>
@@ -21,13 +31,14 @@ export default function App() {
         />
         <Button title="press" onPress={handleButtonPress} />
       </View>
-      <View>
-        {todoList.map((todo) => (
-          <View style={styles.todoItem} key={todo}>
-            <Text>{todo}</Text>
+      <FlatList
+        data={todoList}
+        renderItem={({ item }) => (
+          <View style={styles.todoItem}>
+            <Text>{item.value}</Text>
           </View>
-        ))}
-      </View>
+        )}
+      ></FlatList>
     </View>
   );
 }
