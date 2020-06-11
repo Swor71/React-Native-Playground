@@ -16,7 +16,7 @@ export default function App() {
         <Button title="press" onPress={handleButtonPress} />
       </View>
       <View>
-        {todoList.map(todo => <Text>{todo}</Text>)}
+        {todoList.map(todo => <Text key={todo}>{todo}</Text>)}
       </View>
     </View>
   );
