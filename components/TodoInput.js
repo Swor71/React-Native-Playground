@@ -15,12 +15,19 @@ export const TodoInput = props => {
           onChangeText={handleTextChange}
         />
         <View style={styles.buttonContainer}>
-          <Button title="add a todo" onPress={props.handleButtonPress(todo)} />
-          <Button
-            title="cancel"
-            color="maroon"
-            onPress={props.handleShowModal}
-          />
+          <View style={styles.buttonWidth}>
+            <Button
+              title="add a todo"
+              onPress={props.handleButtonPress(todo)}
+            />
+          </View>
+          <View style={styles.buttonWidth}>
+            <Button
+              title="cancel"
+              color="maroon"
+              onPress={props.handleShowModal}
+            />
+          </View>
         </View>
       </View>
     </Modal>
@@ -43,6 +50,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "50%",
+    width: "70%",
+  },
+  buttonWidth: {
+    width: "45%",
   },
 });
