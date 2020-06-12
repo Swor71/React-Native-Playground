@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TextInput, StyleSheet, Button } from "react-native";
 
-export const TodoInput = (props) => {
+export const TodoInput = props => {
+  const [todo, setTodo] = useState();
+
+  const handleTextChange = value => setTodo(value);
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
         placeholder="Add a todo item"
         style={styles.input}
-        onChangeText={props.handleTextChange}
-        value={props.todo}
+        onChangeText={handleTextChange}
+        value={todo}
       />
-      <Button title="press" onPress={props.handleButtonPress} />
+      <Button title="press" onPress={props.handleButtonPress(todo)} />
     </View>
   );
 };

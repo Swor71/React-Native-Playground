@@ -4,24 +4,17 @@ import { TodoInput } from "./components/TodoInput";
 import { TodoListItem } from "./components/TodoListItem";
 
 export default function App() {
-  const [todo, setTodo] = useState();
   const [todoList, setTodoList] = useState([]);
 
-  const handleTextChange = (value) => setTodo(value);
-
-  const handleButtonPress = () =>
-    setTodoList((prevState) => [
+  const handleButtonPress = todo => () =>
+    setTodoList(prevState => [
       ...prevState,
       { key: Math.random().toString(), value: todo },
     ]);
 
   return (
     <View style={styles.root}>
-      <TodoInput
-        todo={todo}
-        handleTextChange={handleTextChange}
-        handleButtonPress={handleButtonPress}
-      />
+      <TodoInput handleButtonPress={handleButtonPress} />
       <FlatList
         data={todoList}
         renderItem={({ item }) => <TodoListItem item={item} />}
